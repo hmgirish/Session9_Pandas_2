@@ -7,3 +7,36 @@ Solution:
 import pandas as pd
 df = pd.read_csv('https://raw.githubusercontent.com/guipsamora/pandas_exercises/master/06_Stats/US_Baby_Names/US_Baby_Names_right.csv')
 df.head
+
+Questions:
+
+1. Delete unnamed columns
+
+Solution:
+
+df.loc[:, ~df.columns.str.match('Unnamed')]
+
+2. Show the distribution of male and female
+
+Solution:
+
+df.groupby(['Gender']).count()
+
+3. Show the top 5 most preferred names
+
+Solution:
+
+df.sort_values("Count", ascending = False, inplace = True)
+df.head()
+
+4.  What is the median name occurence in the dataset
+
+Solution:
+
+
+
+5. 
+
+Solution:
+
+df.groupby(['State', 'Gender'])['Gender'].count().unstack()
